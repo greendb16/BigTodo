@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="/base :: Metalinks">...</th:block>
+    <title>Title</title>
+
+</head>
+<body>
+<div class="container.fluid">
+<div th:each="todo : ${todos}">
+    <div class="jumbotron" >
+    <h4>[[${todo.name}]]</h4>
+    <h6>Due: <b>[[${todo.duedate}]]</b></h6>
+    <div th:switch="${todo.complete}">
+    <span th:case="true"  class="glyphicon glyphicon-ok"></span>
+    <span th:case="false"  class="glyphicon glyphicon-remove"></span>
+    </div>
+    </div>
+</div>
+</div>
+<th:block th:replace="/base :: bootstrap">...</th:block>
+</body>
+</html>
