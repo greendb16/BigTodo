@@ -20,9 +20,9 @@ public class Todo {
     @Size(min=2, max=15)
     private String name;
 
-    @NotNull
+
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "mm-dd-yyyy")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date duedate;
 
     @NotNull
@@ -30,9 +30,8 @@ public class Todo {
     private String description;
 
     @NotNull
-    @Max(5)
-    private int priority;
-    private boolean complete;
+    private String priority;
+    private String complete;
 
     public long getId() {
         return id;
@@ -66,19 +65,20 @@ public class Todo {
         this.description = description;
     }
 
-    public int getPriority() {
+    public String getPriority() {
         return priority;
     }
 
-    public void setPriority(int priority) {
+    public void setPriority(String priority) {
         this.priority = priority;
     }
 
-    public boolean isComplete() {
+
+    public String getComplete() {
         return complete;
     }
 
-    public void setComplete(boolean complete) {
+    public void setComplete(String complete) {
         this.complete = complete;
     }
 }

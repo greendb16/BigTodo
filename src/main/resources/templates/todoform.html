@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="base :: MetaLinks">...</th:block>
+    <title>Title</title>
+</head>
+<body>
+
+<form action = # th:action="@{/process}" th:object="${todo}" method="post">
+    Name: <input type="text" th:field="*{name}">
+        <span th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}"></span><br/>
+    DueDate: <input type="date" class="form-control" name="duedate" placeholder="Enter DueDate: mm-dd-yyy" th:field="*{duedate}">
+        <span th:if="${#fields.hasErrors('duedate')}"
+              th:errors="*{duedate}"></span><br/>
+    Description: <textarea rows="3" th:field="*{description}"/>
+        <span th:if="${#fields.hasErrors('description')}"
+              th:errors="*{description}"></span><br/>
+    <div class="form-group" >
+        <label for="exampleFormControlSelect2">Priority:</label>
+        <select multiple class="form-control" id="exampleFormControlSelect2" th:field="*{priority}">
+            <option>None</option>
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+            <option>Extreme</option>
+        </select>
+        <span th:if="${#fields.hasErrors('priority')}"
+              th:errors="*{priority}"></span><br/>
+    </div>
+
+    <div class="radio">
+        <label><input type="radio" name="optradio" value="incomplete" th:field="*{complete}" checked  >Incomplete</label>
+    </div>
+    <div class="radio">
+        <label><input type="radio" name="optradio" value="complete" th:filed="*{complete}" >complete</label>
+    </div>
+    <span th:if="${#fields.hasErrors('complete')}"
+          th:errors="*{complete}"></span><br/>
+    <input type="submit" value="Submit">
+</form>
+
+
+
+<th:block th:replace="/base :: bootstrap">...</th:block>
+</body>
+</html>
